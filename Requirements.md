@@ -1,43 +1,126 @@
-To design the reviewers module for a conference website, it's essential to consider the specific needs and responsibilities of reviewers. Here's a set of requirements for the implementation of the reviewers module:
+REQUIREMENT SPECIFICATIONS
 
-1. **User Authentication and Authorization:**
-   - **Requirement:** Implement a secure authentication mechanism to verify the identity of reviewers.
-   - **Requirement:** Define roles and permissions to authorize access levels for reviewers, ensuring they have specific privileges related to their role.
+Reviewer module
 
-2. **Profile Management:**
-   - **Requirement:** Allow reviewers to create and manage their profiles, including personal information, expertise, and contact details.
-   - **Requirement:** Enable reviewers to update their profiles and provide details about their reviewing preferences (e.g., areas of interest, types of papers they prefer to review).
+### 1. Reviewer Login Page
 
-3. **Paper Assignment:**
-   - **Requirement:** Provide a mechanism for assigning papers to reviewers based on their expertise and preferences.
-   - **Requirement:** Allow reviewers to view the list of papers assigned to them, with details such as paper title, abstract, and submission status.
+#### 1.1 Purpose
 
-4. **Review Submission:**
-   - **Requirement:** Implement a user-friendly interface for reviewers to submit their evaluations and feedback for assigned papers.
-   - **Requirement:** Support the ability for reviewers to provide comments, ratings, and recommendations for each paper.
+The purpose of the Reviewer Login Page is to authenticate and authorize
+reviewers to access the conference system.
 
-5. **Review Feedback and Discussions:**
-   - **Requirement:** Enable communication between reviewers and facilitate discussions on specific papers.
-   - **Requirement:** Implement a comment or messaging system to allow reviewers to collaborate and discuss their assessments.
+#### 1.2 Scope
 
-6. **Review Deadline Management:**
-   - **Requirement:** Set and display clear deadlines for reviewers to submit their reviews.
-   - **Requirement:** Implement notifications and reminders to alert reviewers of upcoming deadlines.
+The Reviewer Login Page will provide a secure login mechanism for
+reviewers, allowing them to access the system using either traditional
+credentials or social login methods.
 
-7. **Anonymity and Confidentiality:**
-   - **Requirement:** Allow reviewers to submit reviews anonymously if required by the conference guidelines.
-   - **Requirement:** Ensure the confidentiality of the review process and protect sensitive information.
+#### 1.3 Requirements
 
-8. **Review Quality Control:**
-   - **Requirement:** Implement mechanisms to monitor and ensure the quality and consistency of reviews.
-   - **Requirement:** Provide a way for program committee members to assess and, if necessary, moderate reviews.
+##### Authentication and login:
 
-9. **Reporting and Analytics:**
-   - **Requirement:** Generate reports on the reviewing process, including the number of reviews completed, average ratings, and any issues reported.
-   - **Requirement:** Implement analytics to track the performance and contributions of individual reviewers.
+Implement a system to allow a user to register himself/herself as a
+reviewer using their email ID and can additionally provide a mobile
+number at his/her discretion.
 
-10. **User Support:**
-    - **Requirement:** Provide a help desk or support system for reviewers to address any technical issues or questions related to the reviewing process.
-    - **Requirement:** Offer clear documentation and guidelines on how to use the reviewing module.
+##### Account recovery:
 
-These requirements aim to create a comprehensive and efficient reviewers module that meets the specific needs of individuals responsible for evaluating conference papers. 
+Implement a mechanism via which a reviewer can reset the password in
+case they forget. They can reset their password via OTP sent to their
+mail or mobile number(if provided).
+
+##### Authorization
+
+Prevent users who are not listed as reviewers in the database from
+logging in to the reviewer portal.
+
+##### Login Restrictions
+
+Reviewers using social login methods shall only be allowed access if
+their credentials match an entry in the list of approved reviewers.
+
+##### Account Lockout
+
+The system shall implement an account lockout mechanism after a
+specified number of unsuccessful login attempts to enhance security.
+
+### 2. Reviewer Dashboard
+
+#### 2.1 Purpose
+
+The purpose of the Reviewer Dashboard is to provide reviewers with a
+central hub to manage their reviewing tasks efficiently.
+
+#### 2.2 Scope
+
+The Reviewer Dashboard will display a list of papers assigned to the
+reviewer for review, facilitating easy navigation and submission of
+evaluations.
+
+#### 2.3 Requirements
+
+##### Paper List
+
+The system shall present a clear and organized list of papers assigned
+to the reviewer on their dashboard. The papers will be categorized as
+reviewed or pending and each of these categories will be organized by
+their respective authors.
+
+##### Edit/Delete review
+
+If a reviewer wants to edit a review, the status of the review will be
+changed from reviewed to pending and the user can either update the
+review by editing the rating/review/comments and resubmit(after which
+the status will be changed back to reviewed) or delete the review
+entirely.
+
+##### Paper Details
+
+For each paper in the list, the system shall display relevant details
+such as title, abstract, author information, and submission status.
+
+##### Reviewer Actions
+
+The reviewer shall be able to access actions for each paper, including
+submitting reviews, viewing paper details, and providing feedback via
+comments. The reviewer will also provide a numerical rating on a scale
+of 1-5 as a final and succint verdict. The review and rating are
+mandatory to mark a paper as reviewed.
+
+##### Task Status
+
+The system shall indicate the status of the reviewer's tasks, including
+pending reviews, completed reviews, and upcoming deadlines.
+
+##### Notification
+
+The system shall notify reviewers of new assignments, approaching
+deadlines, and any important updates related to their reviewing tasks.
+The notifications will be sent to their registered mail-id.
+
+##### Log out Functionality
+
+The dashboard will have a button for the user to logout of the reviewer
+portal.
+
+### 3. Non-functional Requirements
+
+#### 3.1 Security
+
+The Reviewer Login Page and Dashboard shall adhere to best possible
+practices for security, including encryption of sensitive data(in this
+case, sensitive data only include the login credentials).
+
+#### 3.3 Compatibility
+
+The Reviewer Module shall be compatible with common web browsers and
+devices, ensuring accessibility for all reviewers.
+
+#####  3.4 User Interface
+
+The Reviewer Dashboard shall have an intuitive and user-friendly
+interface, promoting ease of use and navigation. Since the numbers of
+features to be implemented are few, it is assumed that adhering to the
+specifications of this document will ensure a user-friendly experience
+by default.
+
