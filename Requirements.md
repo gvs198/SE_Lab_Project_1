@@ -123,4 +123,4 @@ interface, promoting ease of use and navigation. Since the numbers of
 features to be implemented are few, it is assumed that adhering to the
 specifications of this document will ensure a user-friendly experience
 by default.
-
+![Blank diagram](https://github.com/Yajat-P/SE_Lab_Project_1/assets/55974164/e6fcf53b-74ab-479b-a4ba-e8cdc60f8325)
