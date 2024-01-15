@@ -123,4 +123,7 @@ interface, promoting ease of use and navigation. Since the numbers of
 features to be implemented are few, it is assumed that adhering to the
 specifications of this document will ensure a user-friendly experience
 by default.
-![Blank diagram(1)](https://github.com/Yajat-P/SE_Lab_Project_1/assets/55974164/6ceb7355-4864-4856-9f50-eaa9c778bee4)
+![Blank diagram(2)](https://github.com/gvs198/my_code/assets/115711727/f46a5b1e-2d5c-4a8f-8b8b-f28a761b1b36)
+
+
+
