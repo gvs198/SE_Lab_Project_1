@@ -32,7 +32,7 @@ mail or mobile number(if provided).
 ##### Authorization
 
 Prevent users who are not listed as reviewers in the database from
-logging in to the reviewer portal.
+logging in to the reviewer portal. In this case, it is assumed that every usere who has a an account registered via the reviewer login portal is a reviewer
 
 ##### Login Restrictions
 
