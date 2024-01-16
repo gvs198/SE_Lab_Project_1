@@ -77,11 +77,11 @@ entirely.
 ##### Paper Details
 
 For each paper in the list, the system shall display relevant details
-such as title, abstract, author information, and submission status.
+: title, abstract, author information, and submission status.
 
 ##### Reviewer Actions
 
-The reviewer shall be able to access actions for each paper, including
+The reviewer shall be able to access actions for each paper:
 submitting reviews, viewing paper details, and providing feedback via
 comments. The reviewer will also provide a numerical rating on a scale
 of 1-5 as a final and succint verdict. The review and rating are
