@@ -90,7 +90,7 @@ mandatory to mark a paper as reviewed.
 ##### Task Status
 
 The system shall indicate the status of the reviewer's tasks, including
-pending reviews, completed reviews, and upcoming deadlines.
+pending reviews, completed reviews, and upcoming deadlines. Since the deadlined are assigned by the program committee, we will not be implementing a deadline system.
 
 ##### Notification
 
