@@ -123,7 +123,7 @@ interface, promoting ease of use and navigation. Since the numbers of
 features to be implemented are few, it is assumed that adhering to the
 specifications of this document will ensure a user-friendly experience
 by default.
-![Blank diagram(2)](https://github.com/gvs198/SE_Lab24_Project_1/assets/115711727/859048c8-5272-49f1-83c5-b73e7bc6c01e)
+![Blank diagram](https://github.com/gvs198/my_code/assets/115711727/221b7233-fb80-4eb9-93df-551a80a5210e)
 
 
 
