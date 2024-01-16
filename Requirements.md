@@ -32,7 +32,7 @@ mail or mobile number(if provided).
 ##### Authorization
 
 Prevent users who are not listed as reviewers in the database from
-logging in to the reviewer portal. In this case, it is assumed that every usere who has a an account registered via the reviewer login portal is a reviewer
+logging in to the reviewer portal. In this case, it is assumed that every usere who has a an account registered via the reviewer login portal is a reviewer.
 
 ##### Login Restrictions
 
@@ -64,7 +64,7 @@ evaluations.
 The system shall present a clear and organized list of papers assigned
 to the reviewer on their dashboard. The papers will be categorized as
 reviewed or pending and each of these categories will be organized by
-their respective authors.
+their respective authors(alphabetically sorted,i.e., papers authored by the same author will appear in the same cluster and the clusters will be sorted alphabetically).
 
 ##### Edit/Delete review
 
