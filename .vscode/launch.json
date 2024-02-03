@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ReviewerApplication<reviewer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "nitconf.reviewermodule.reviewer.ReviewerApplication",
+            "projectName": "reviewer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
