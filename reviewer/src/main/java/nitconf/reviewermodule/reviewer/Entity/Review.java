@@ -24,6 +24,9 @@ public class Review {
 
     @Column(name ="comments", nullable = true)
     private String comments;
+
+
+    
     
     public Review() {
     }
