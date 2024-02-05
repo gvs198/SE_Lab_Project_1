@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "reviews")
 public class Review {
-
+ 
     /**
      * The unique identifier for the review.
      */
