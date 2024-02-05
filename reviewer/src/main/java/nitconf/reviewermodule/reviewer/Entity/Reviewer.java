@@ -1,72 +1,70 @@
 package nitconf.reviewermodule.reviewer.Entity;
 
-import java.util.List;
+import java.sql.Date;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "reviewers")
 public class Reviewer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Column(name="first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name="middle_name", nullable= true)
-    private String middleName;
-    @Column(name="last_name", nullable = true)
+
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="phone_no", nullable = true)
-    private Long phoneNo;
-    @ElementCollection
-    @CollectionTable(name="reviewer_doi", joinColumns = @JoinColumn(name ="reviewer_id", referencedColumnName = "Id" ))
-    @Column(name ="domain", nullable =true)
-    private List <String> domainsOfInterest;
 
-    @Column(name= "educationlevel", nullable = true)
-    private String educationLevel;
+    @Column(name = "phone_no", nullable = true)
+    private String phoneNo;
 
-    @Column(name="email", nullable= false)
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name="password", nullable= false)
+    @Column(name = "education_level")
+    private String educationLevel;
+
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    @Column(name = "gender")
+    private String gender;
     
+
     public Reviewer() {
     }
 
 
-    public Reviewer(String firstName, String middleName, String lastName, Long phoneNo, List<String> domainsOfInterest,
-            String educationLevel, String email, String password) {
+    public Reviewer(String firstName, String lastName, String phoneNo, String email, String educationLevel,
+            String password, Date dateOfBirth, String gender) {
         this.firstName = firstName;
-        this.middleName = middleName;
         this.lastName = lastName;
         this.phoneNo = phoneNo;
-        this.domainsOfInterest = domainsOfInterest;
-        this.educationLevel = educationLevel;
         this.email = email;
+        this.educationLevel = educationLevel;
         this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
     }
 
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
 
@@ -80,16 +78,6 @@ public class Reviewer {
     }
 
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-
     public String getLastName() {
         return lastName;
     }
@@ -100,33 +88,13 @@ public class Reviewer {
     }
 
 
-    public Long getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
 
-    public void setPhoneNo(Long phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
-    }
-
-
-    public List<String> getDomainsOfInterest() {
-        return domainsOfInterest;
-    }
-
-
-    public void setDomainsOfInterest(List<String> domainsOfInterest) {
-        this.domainsOfInterest = domainsOfInterest;
-    }
-
-
-    public String getEducationLevel() {
-        return educationLevel;
-    }
-
-
-    public void setEducationLevel(String educationLevel) {
-        this.educationLevel = educationLevel;
     }
 
 
@@ -140,6 +108,16 @@ public class Reviewer {
     }
 
 
+    public String getEducationLevel() {
+        return educationLevel;
+    }
+
+
+    public void setEducationLevel(String educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+
     public String getPassword() {
         return password;
     }
@@ -149,18 +127,28 @@ public class Reviewer {
         this.password = password;
     }
 
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+    public String getGender() {
+        return gender;
+    }
+
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
     
 
-
-
-    
-
-
-
-
-
-
-
+    // Getters and setters for all fields
 
     
 }

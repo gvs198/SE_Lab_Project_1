@@ -1,45 +1,49 @@
 package nitconf.reviewermodule.reviewer.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import nitconf.reviewermodule.reviewer.Entity.Reviewer;
-import nitconf.reviewermodule.reviewer.Service.ReviewerService;
+import nitconf.reviewermodule.reviewer.Repository.ReviewerRepository;
 
-
-
-@Controller
-@RequestMapping("/auth")
+@RestController
+@RequestMapping()
 public class ReviewerController {
 
     @Autowired
-    private ReviewerService reviewerService;
+    private ReviewerRepository reviewerRepository;
 
     @GetMapping("/login")
-    public String login() {
+    public String loginForm() {
         return "login";
     }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("reviewer", new Reviewer());
-        return "register";
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Reviewer reviewer) {
+        // Perform validation and password comparison here
+        Reviewer foundReviewer = reviewerRepository.findByEmail(reviewer.getEmail());
+        if (foundReviewer != null) {
+            // Generate and return a token or session information
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid credentials");
+        }
     }
 
-    @PostMapping("/register")
-    public String register(@ModelAttribute Reviewer reviewer, Model model) {
-        try {
-            reviewerService.registerReviewer(reviewer);
-            return "redirect:/auth/login";
-        } catch (RuntimeException e) {
-            // Handle registration error (e.g., email already registered)
-            model.addAttribute("error", e.getMessage());
-            return "register";
-        }
+    @GetMapping("/signup")
+    public String signupForm() {
+        return "signup";
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> signup(@RequestBody Reviewer reviewer) {
+        // Perform validation and password hashing here
+        reviewerRepository.save(reviewer);
+        return ResponseEntity.ok("Reviewer registered successfully");
     }
 }
