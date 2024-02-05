@@ -39,24 +39,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { // Cha
         auth.authenticationProvider(authenticationProvider());
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(
+    // SecurityConfiguration.java
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http.authorizeRequests()
+            .antMatchers(
                 "/registration**",
                 "/js/**",
                 "/css/**",
                 "/img/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
                 .permitAll()
-                .and()
-                .logout()
+            .and()
+            .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-    }
+}
+
 }

@@ -1,52 +1,49 @@
 package nitconf.reviewermodule.reviewer.Entity;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "reviews")
 public class Review {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "tectual_review", nullable= false)
-    private String textualReview;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name= "numerical_rating", nullable = false)
+    private String textualPart;
     private int numericalRating;
-
-    @Column(name ="comments", nullable = true)
-    private String comments;
-
-
-    
-    
     public Review() {
     }
-    
-    public Review(String textualReview, int numericalRating, String comments) {
-        this.textualReview = textualReview;
+    public Review(User user, String textualPart, int numericalRating) {
+        this.user = user;
+        this.textualPart = textualPart;
         this.numericalRating = numericalRating;
-        this.comments = comments;
     }
-
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public String getTextualReview() {
-        return textualReview;
+    public User getUser() {
+        return user;
     }
-    public void setTextualReview(String textualReview) {
-        this.textualReview = textualReview;
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public String getTextualPart() {
+        return textualPart;
+    }
+    public void setTextualPart(String textualPart) {
+        this.textualPart = textualPart;
     }
     public int getNumericalRating() {
         return numericalRating;
@@ -54,15 +51,7 @@ public class Review {
     public void setNumericalRating(int numericalRating) {
         this.numericalRating = numericalRating;
     }
-    public String getComments() {
-        return comments;
-    }
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
 
-    
-
-
+    // getters and setters
     
 }
