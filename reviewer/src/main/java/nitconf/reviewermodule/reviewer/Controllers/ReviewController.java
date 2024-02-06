@@ -1,6 +1,7 @@
 package nitconf.reviewermodule.reviewer.Controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,16 +35,19 @@ public class ReviewController {
 
     @PostMapping("/submit")
     public String submitReview(@ModelAttribute Review review, Principal principal) {
-        // Retrieve the logged-in user by email
         String userEmail = principal.getName();
         User user = userRepository.findByEmail(userEmail);
-
-        // Associate the user with the review
         review.setUser(user);
-
-        // Save the review to the database
         reviewRepository.save(review);
-
         return "redirect:/reviews/submit?success";
+    }
+
+    @GetMapping("/all")
+    public String showAllReviews(Model model, Principal principal) {
+        String userEmail = principal.getName();
+        User user = userRepository.findByEmail(userEmail);
+        List<Review> userReviews = reviewRepository.findByUser(user);
+        model.addAttribute("userReviews", userReviews);
+        return "allReviews";
     }
 }

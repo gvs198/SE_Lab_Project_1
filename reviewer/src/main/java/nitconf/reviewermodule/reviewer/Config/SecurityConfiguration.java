@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { // Cha
         auth.authenticationProvider(authenticationProvider());
     }
 
-    // SecurityConfiguration.java
+    
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
@@ -52,7 +52,7 @@ protected void configure(HttpSecurity http) throws Exception {
             .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
+                //.defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
                 .permitAll()
             .and()
             .logout()
