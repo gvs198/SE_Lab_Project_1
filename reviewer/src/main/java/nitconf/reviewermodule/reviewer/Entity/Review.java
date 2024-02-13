@@ -23,6 +23,7 @@ public class Review {
     private String textualPart;
     
    
+    @Range(min= 1, max=5)
     private int numericalRating;
     public Review() {
     }

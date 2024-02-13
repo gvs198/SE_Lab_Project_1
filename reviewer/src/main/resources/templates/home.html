@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviewer Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #800080; /* Purple color for the header */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #4B0082; /* Darker purple for border */
+            width: 100%;
+        }
+
+        .welcome-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: purple; /* Purple color for the button */
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #6A5ACD; /* Darker shade of purple on hover */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Reviewer Home</h1>
+</header>
+
+<div class="welcome-container">
+    <h2>Welcome to the Reviewer Platform</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod lacus ut sapien fermentum, ut tristique sapien convallis. 
+        Integer vestibulum vel libero nec facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+        Cras at ullamcorper orci. Aliquam ut libero id est dictum eleifend. Proin feugiat, nisl in feugiat malesuada, metus velit scelerisque augue, 
+        at fringilla velit elit eu turpis. Quisque quis aliquet elit. Nulla facilisi. Integer tristique, libero vel luctus euismod, turpis elit 
+        accumsan dolor, et rutrum sapien quam vel lectus. Sed vulputate, nulla id laoreet fermentum, velit orci sagittis elit, sit amet scelerisque 
+        neque quam vel libero. Sed quis arcu ligula.
+    </p>
+</div>
+
+<div class="button-container">
+    <button onclick="redirectToLoginPage()">Log In</button>
+    <button onclick="redirectToSignUpPage()">Sign Up</button>
+</div>
+
+<script>
+    function redirectToLoginPage() {
+        alert('Redirect to Log In page');
+        // Add code to redirect to the Log In page
+    }
+
+    function redirectToSignUpPage() {
+        alert('Redirect to Sign Up page');
+        // Add code to redirect to the Sign Up page
+    }
+</script>
+
+</body>
+</html>
