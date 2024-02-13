@@ -52,7 +52,7 @@ protected void configure(HttpSecurity http) throws Exception {
             .and()
             .formLogin()
                 .loginPage("/login")
-                //.defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
+                .defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
                 .permitAll()
             .and()
             .logout()

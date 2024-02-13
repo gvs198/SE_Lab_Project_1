@@ -20,8 +20,8 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("reviewermodule.main"))
-                .paths(PathSelectors.regex("/.*"))
+                .apis(RequestHandlerSelectors.basePackage("nitconf.reviewermodule.reviewer.Config"))
+                .paths(PathSelectors.regex("/api"))
                 .build().apiInfo(apiInfoMetaData());
     }
 
