@@ -27,10 +27,10 @@ public class ReviewController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/submit")
+    @GetMapping("/dashboard")
     public String showReviewForm(Model model) {
         model.addAttribute("review", new Review());
-        return "reviewForm";
+        return "index";
     }
 
     @PostMapping("/submit")
@@ -39,8 +39,9 @@ public class ReviewController {
         User user = userRepository.findByEmail(userEmail);
         review.setUser(user);
         reviewRepository.save(review);
-        return "redirect:/reviews/submit?success";
+        return "redirect:/reviews/submit?success=true"; 
     }
+    
 
     @GetMapping("/all")
     public String showAllReviews(Model model, Principal principal) {

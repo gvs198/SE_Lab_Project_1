@@ -9,7 +9,7 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <!-- create navigation bar ( header) -->
+    <!-- create navigation bar (header) -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -40,7 +40,13 @@
     <br>
 
     <div class="container">
-        <h1>Welcome <span sec:authentication="principal.username"> User</span></h1>
+        <h1>Welcome <span sec:authentication="principal.username">User</span></h1>
+        <!-- Display success message if redirected with ?success parameter -->
+        <div th:if="${param.success}">
+            <div class="alert alert-success" role="alert">
+                Review submitted successfully!
+            </div>
+        </div>
     </div>
 
     <!-- Include Bootstrap JS and jQuery -->

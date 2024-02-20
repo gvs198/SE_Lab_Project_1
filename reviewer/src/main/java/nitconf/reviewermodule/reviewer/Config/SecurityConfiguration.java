@@ -47,12 +47,17 @@ protected void configure(HttpSecurity http) throws Exception {
                 "/registration**",
                 "/js/**",
                 "/css/**",
-                "/img/**").permitAll()
+                "/img/**",
+                "/swagger-ui.html",     // Permit access to Swagger UI
+                "/swagger-resources/**", // Permit access to Swagger resources
+                "/v2/api-docs",         // Permit access to API docs
+                "/webjars/**").permitAll() // Permit access to webjars (needed by Swagger UI)
+            .antMatchers("/api/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/reviews/submit", true) // Set the default target URL
+                .defaultSuccessUrl("/reviews/dashboard", true)
                 .permitAll()
             .and()
             .logout()
@@ -62,5 +67,4 @@ protected void configure(HttpSecurity http) throws Exception {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
 }
-
 }
