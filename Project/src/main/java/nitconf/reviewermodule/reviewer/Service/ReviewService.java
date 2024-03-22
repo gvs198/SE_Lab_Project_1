@@ -71,6 +71,11 @@ public class ReviewService {
         {
             return false;
         }
+       ReviewedPapers reviewedPapers= reviewedPapersRepository.findByReviewedPaperAndReviewer(paperToBeReviewed, reviewer);
+       if(reviewedPapers!=null)
+       {
+        return false;
+       }
       
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalDateTime deadline = paperToBeReviewed.getDeadLine();
@@ -113,7 +118,7 @@ public class ReviewService {
         }
 
       
-        // Update the review content (assuming the review is retrieved in ReviewedPapers)
+        
         Review existingReview = reviewedPaper.getReview();
         if (existingReview == null) {
             return false;
