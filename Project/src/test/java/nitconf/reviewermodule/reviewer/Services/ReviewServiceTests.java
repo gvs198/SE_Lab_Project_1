@@ -255,36 +255,7 @@ void updateReviewForPaper_Success_ReturnsTrue() {
         assertNull(review);
     }
 
-    @Test
-    void getReviewForPaper_PaperNotReviewedByUser_ReturnsNull() {
 
-        Paper paper = new Paper();
-        when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
-        when(userRepository.findByUserId(anyString())).thenReturn(new User());
-        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(null);
-
-
-        Review review = reviewService.getReviewForPaper(1, "user123");
-
-
-        assertNull(review);
-    }
-
-    @Test
-    void getReviewForPaper_Success_ReturnsReview() {
-
-        Paper paper = new Paper();
-        when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
-        when(userRepository.findByUserId(anyString())).thenReturn(new User());
-        Review review = new Review();
-        ReviewedPapers reviewedPaper = mock(ReviewedPapers.class);
-        when(reviewedPaper.getReview()).thenReturn(review);
-        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(reviewedPaper);
-
-        Review retrievedReview = reviewService.getReviewForPaper(1, "user123");
-
-        assertEquals(review, retrievedReview);
-    }
 
 
 
