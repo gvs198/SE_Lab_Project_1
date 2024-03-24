@@ -26,6 +26,34 @@ import nitconf.reviewermodule.reviewer.Service.PaperService;
 
 public class PaperServiceTests {
 
+    @Mock
+    private PaperRepository paperRepository;
+
+    @Mock
+    private ReviewedPapersRepository reviewedPapersRepository;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private PaperService paperService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    void reviewedPapers_UserNotFound_ReturnsEmptyList() {
+       
+        when(userRepository.findByUserId(anyString())).thenReturn(null);
+
+       
+        List<ReviewedPapers> results = paperService.reviewedPapers("user123");
+
+        
+        assertTrue(results.isEmpty());
+    }
 
    
     
