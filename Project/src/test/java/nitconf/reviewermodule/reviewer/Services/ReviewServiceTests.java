@@ -214,7 +214,7 @@ void updateReviewForPaper_Success_ReturnsTrue() {
         assertFalse(result);
     }
 
-    @Test
+  @Test
     void deleteReviewForPaper_Success_ReturnsTrue() {
         Paper paper = new Paper();
         paper.setDeadLine(LocalDate.now().plusDays(1));
@@ -229,6 +229,64 @@ void updateReviewForPaper_Success_ReturnsTrue() {
         verify(reviewRepository).delete(reviewedPaper.getReview());
         verify(reviewedPapersRepository).delete(reviewedPaper);
     }
+
+    @Test
+    void getReviewForPaper_PaperNotFound_ReturnsNull() {
+
+        when(paperRepository.findByPaperid(anyInt())).thenReturn(null);
+
+
+        Review review = reviewService.getReviewForPaper(1, "user123");
+
+
+        assertNull(review);
+    }
+
+    @Test
+    void getReviewForPaper_UserNotFound_ReturnsNull() {
+
+        when(paperRepository.findByPaperid(anyInt())).thenReturn(new Paper());
+        when(userRepository.findByUserId(anyString())).thenReturn(null);
+
+
+        Review review = reviewService.getReviewForPaper(1, "user123");
+
+
+        assertNull(review);
+    }
+
+    @Test
+    void getReviewForPaper_PaperNotReviewedByUser_ReturnsNull() {
+
+        Paper paper = new Paper();
+        when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
+        when(userRepository.findByUserId(anyString())).thenReturn(new User());
+        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(null);
+
+
+        Review review = reviewService.getReviewForPaper(1, "user123");
+
+
+        assertNull(review);
+    }
+
+    @Test
+    void getReviewForPaper_Success_ReturnsReview() {
+
+        Paper paper = new Paper();
+        when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
+        when(userRepository.findByUserId(anyString())).thenReturn(new User());
+        Review review = new Review();
+        ReviewedPapers reviewedPaper = mock(ReviewedPapers.class);
+        when(reviewedPaper.getReview()).thenReturn(review);
+        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(reviewedPaper);
+
+        Review retrievedReview = reviewService.getReviewForPaper(1, "user123");
+
+        assertEquals(review, retrievedReview);
+    }
+
+
 
 
 
