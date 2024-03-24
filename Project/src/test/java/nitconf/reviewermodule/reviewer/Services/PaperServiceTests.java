@@ -54,6 +54,21 @@ public class PaperServiceTests {
         
         assertTrue(results.isEmpty());
     }
+    @Test
+    void reviewedPapers_Success_ReturnsReviewedPapers() {
+        
+        User reviewer = new User();
+        when(userRepository.findByUserId(anyString())).thenReturn(reviewer);
+        List<ReviewedPapers> expectedReviewedPapers = new ArrayList<>();
+        when(reviewedPapersRepository.findByReviewer(reviewer)).thenReturn(expectedReviewedPapers);
+
+       
+        List<ReviewedPapers> results = paperService.reviewedPapers("user123");
+
+       
+        assertEquals(expectedReviewedPapers, results);
+    }
+
 
    
     
