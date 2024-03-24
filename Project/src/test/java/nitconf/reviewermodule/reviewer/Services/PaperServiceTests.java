@@ -68,7 +68,34 @@ public class PaperServiceTests {
        
         assertEquals(expectedReviewedPapers, results);
     }
+    @Test
+    void assignedPapers_UserNotFound_ReturnsEmptyList() {
+   
+        when(userRepository.findByUserId(anyString())).thenReturn(null);
 
+     
+        List<Paper> results = paperService.assignedPapers("user123");
+
+        
+        assertTrue(results.isEmpty());
+    }
+
+    @Test
+    void assignedPapers_Success_ReturnsAssignedPapers() {
+        
+        User reviewer = new User();
+        when(userRepository.findByUserId(anyString())).thenReturn(reviewer);
+        List<Paper> allPapers = new ArrayList<>();
+        allPapers.add(new Paper());
+        when(paperRepository.findAll()).thenReturn(allPapers);
+        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(null); // No reviewed papers
+
+        
+        List<Paper> results = paperService.assignedPapers("user123");
+
+      
+        assertEquals(allPapers, results);
+    }
 
    
     
