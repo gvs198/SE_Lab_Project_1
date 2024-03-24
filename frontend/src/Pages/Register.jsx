@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Register.css'
 
 
 //import './Register.css';
@@ -22,17 +23,15 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form data submitted:', formData);
     // You can add logic here to send the form data to your server for authentication
-    axios.post('http://localhost:8080/register', formData).then((res) => {
+    await axios.post('http://localhost:8080/register', formData).then((res) => {
       console.log("registered");
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('authorId',(res.data.id))
       //emailjs.sendForm('service_ndmh9hs', 'template_kt5cpce', e.target, 'Fu40AmkAkR7VbMApW')
-
-      navigate("/dashboard")
 
     }
     ).catch((err) => {

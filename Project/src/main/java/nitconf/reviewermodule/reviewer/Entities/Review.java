@@ -23,6 +23,9 @@ public class Review {
     @DBRef
     private User reviewer;
 
+    @DBRef
+    private Paper paper;
+
     
 
     public Review(String content) {
@@ -34,6 +37,14 @@ public class Review {
     public Review(String content, User reviewer) {
         this.content = content;
         this.reviewer = reviewer;
+    }
+
+
+
+    public Review(String content, User reviewer, Paper paper) {
+        this.content = content;
+        this.reviewer = reviewer;
+        this.paper = paper;
     }
     
 

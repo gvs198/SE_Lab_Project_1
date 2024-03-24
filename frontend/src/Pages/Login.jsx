@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import './login.css'
+import './Login.css'
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -17,15 +17,15 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form data submitted:', formData);
-    axios
+    await axios
       .post('http://localhost:8080/login', formData)
       .then((res) => {
         console.log(res);
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('authorId',res.data.id)
+        localStorage.setItem('authorId',res.data.id);
         navigate("/dashboard");
       })
       .catch((err) => {

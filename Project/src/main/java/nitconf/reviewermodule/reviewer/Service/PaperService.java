@@ -1,5 +1,7 @@
 package nitconf.reviewermodule.reviewer.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +48,14 @@ public class PaperService {
         }
 
         return assignedPapers;
+    }
+
+    public void addPapers(int paperid, String title, String authors,String abstractLink,LocalDate deadLine)
+    {
+        Paper newPaper = new Paper(paperid, title, authors, abstractLink, deadLine);
+        paperRepository.save(newPaper);
+
+
     }
 
 

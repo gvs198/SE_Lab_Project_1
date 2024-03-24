@@ -1,5 +1,6 @@
 package nitconf.reviewermodule.reviewer.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +47,7 @@ public class ReviewService {
 
 
 
-    public int checkdeadLine(LocalDateTime currentDateTime, LocalDateTime deadLine)
+    public int checkdeadLine(LocalDate currentDateTime, LocalDate deadLine)
     {
         if(currentDateTime.isAfter(deadLine))
         {
@@ -77,15 +78,15 @@ public class ReviewService {
         return false;
        }
       
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime deadline = paperToBeReviewed.getDeadLine();
+        LocalDate currentDateTime = LocalDate.now();
+        LocalDate deadline = paperToBeReviewed.getDeadLine();
       
         if (checkdeadLine(currentDateTime, deadline) == 0) {
           return false;
         }
       
         // Create the review
-        Review review = new Review(reviewBody, reviewer);
+        Review review = new Review(reviewBody, reviewer, paperToBeReviewed);
         reviewRepository.save(review);
       
     
@@ -152,8 +153,8 @@ public class ReviewService {
 
 
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime deadLine = papertobeunreviewed.getDeadLine();
+        LocalDate currentDateTime = LocalDate.now();
+        LocalDate deadLine = papertobeunreviewed.getDeadLine();
         if(checkdeadLine(currentDateTime, deadLine)==0)
         {
             return false;
@@ -170,6 +171,27 @@ public class ReviewService {
         
 
     }
+
+
+public Review getReviewForPaper(int paper_id, String userid)
+{
+    Paper paper = paperRepository.findByPaperid(paper_id);
+    if(paper==null)
+    {
+        return null;
+    }
+    User reviewer = userRepository.findByUserId(userid);
+    ReviewedPapers reviewedPaper = reviewedPapersRepository.findByReviewedPaperAndReviewer(paper, reviewer);
+        if(reviewedPaper==null)
+        {
+            return null;
+        }
+    return reviewedPaper.getReview();
+
+    
+
+
+}
 
 
 

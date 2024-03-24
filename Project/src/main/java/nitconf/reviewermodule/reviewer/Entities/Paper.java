@@ -1,5 +1,6 @@
 package nitconf.reviewermodule.reviewer.Entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,9 +23,17 @@ public class Paper {
     ObjectId id;
     int paperid;
     private String title;
-    private List<String> authors;
+    private String authors;
     private String abstractLink;
-    private LocalDateTime deadLine;
+    private LocalDate deadLine;
+    public Paper(int paperid, String title, String authors, String abstractLink, LocalDate deadLine) {
+        this.paperid = paperid;
+        this.title = title;
+        this.authors = authors;
+        this.abstractLink = abstractLink;
+        this.deadLine = deadLine;
+    }
+    
     
 
 

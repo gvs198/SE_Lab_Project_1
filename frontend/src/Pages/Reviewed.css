@@ -1,0 +1,21 @@
+/* Reviewed.css */
+
+.reviewed-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .reviewed-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .reviewed-content {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+  }
+  

@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -74,7 +75,7 @@ public class ReviewServiceTests {
     void createReviewForPaper_DeadlinePassed_ReturnsFalse() {
        
         Paper paper = new Paper();
-        paper.setDeadLine(LocalDateTime.now().minusDays(1)); 
+        paper.setDeadLine(LocalDate.now().minusDays(1)); 
         when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
         when(userRepository.findByUserId(anyString())).thenReturn(new User());
         
@@ -89,7 +90,7 @@ public class ReviewServiceTests {
     void createReviewForPaper_Success_ReturnsTrue() {
        
         Paper paper = new Paper();
-        paper.setDeadLine(LocalDateTime.now().plusDays(1)); 
+        paper.setDeadLine(LocalDate.now().plusDays(1)); 
         when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
         when(userRepository.findByUserId(anyString())).thenReturn(new User());
         
