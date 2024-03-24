@@ -26,19 +26,7 @@ import nitconf.reviewermodule.reviewer.Service.PaperService;
 
 public class PaperServiceTests {
 
-    @Mock
-    private PaperRepository paperRepository;
 
-    @Mock
-    private ReviewedPapersRepository reviewedPapersRepository;
-
-    @Mock
-    private UserRepository userRepository;
-
-    @InjectMocks
-    private PaperService paperService;
-
-
-
-
+   
+    
 }
