@@ -12,7 +12,7 @@ const Reviewed = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(http://localhost:8080/papers/reviewedpapers/${authorId},{
+        const response = await axios.get(`http://localhost:8080/papers/reviewedpapers/${authorId}`,{
           headers: {
               Authorization : 'Bearer ' + token
           }
@@ -29,7 +29,7 @@ const Reviewed = () => {
   const getReview = async (paperId) => {
     console.log(paperId)
     try {
-      const response = await axios.get(http://localhost:8080/reviews/getreview/${parseInt(paperId)}/${authorId},{
+      const response = await axios.get(`http://localhost:8080/reviews/getreview/${parseInt(paperId)}/${authorId}`,{
         headers: {
             Authorization : 'Bearer ' + token
         }
@@ -62,7 +62,7 @@ const Reviewed = () => {
         <tbody>
           {papers.map(paper => (
             <tr key={paper.paperid}>
-              <td><a href={/update/${paper.reviewedPaper.paperid}}>{paper.reviewedPaper.title}</a></td>
+              <td><a href={`/update/${paper.reviewedPaper.paperid}`}>{paper.reviewedPaper.title}</a></td>
               <td>{paper.reviewedPaper.authors}</td>
               <td>{reviews[paper.reviewedPaper.paperid]}</td>
 
