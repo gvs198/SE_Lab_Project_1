@@ -45,46 +45,44 @@ public class PaperServiceTests {
 
     @Test
     void reviewedPapers_UserNotFound_ReturnsEmptyList() {
-        // Arrange
+       
         when(userRepository.findByUserId(anyString())).thenReturn(null);
 
-        // Act
+       
         List<ReviewedPapers> results = paperService.reviewedPapers("user123");
 
-        // Assert
+        
         assertTrue(results.isEmpty());
     }
-
     @Test
     void reviewedPapers_Success_ReturnsReviewedPapers() {
-        // Arrange
+        
         User reviewer = new User();
         when(userRepository.findByUserId(anyString())).thenReturn(reviewer);
         List<ReviewedPapers> expectedReviewedPapers = new ArrayList<>();
         when(reviewedPapersRepository.findByReviewer(reviewer)).thenReturn(expectedReviewedPapers);
 
-        // Act
+       
         List<ReviewedPapers> results = paperService.reviewedPapers("user123");
 
-        // Assert
+       
         assertEquals(expectedReviewedPapers, results);
     }
-
     @Test
     void assignedPapers_UserNotFound_ReturnsEmptyList() {
-        // Arrange
+   
         when(userRepository.findByUserId(anyString())).thenReturn(null);
 
-        // Act
+     
         List<Paper> results = paperService.assignedPapers("user123");
 
-        // Assert
+        
         assertTrue(results.isEmpty());
     }
 
     @Test
     void assignedPapers_Success_ReturnsAssignedPapers() {
-        // Arrange
+        
         User reviewer = new User();
         when(userRepository.findByUserId(anyString())).thenReturn(reviewer);
         List<Paper> allPapers = new ArrayList<>();
@@ -92,13 +90,13 @@ public class PaperServiceTests {
         when(paperRepository.findAll()).thenReturn(allPapers);
         when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(null); // No reviewed papers
 
-        // Act
+        
         List<Paper> results = paperService.assignedPapers("user123");
 
-        // Assert
+      
         assertEquals(allPapers, results);
     }
 
+   
     
 }
-
