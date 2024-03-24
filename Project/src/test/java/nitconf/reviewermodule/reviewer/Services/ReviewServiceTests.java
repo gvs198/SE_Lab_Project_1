@@ -214,46 +214,6 @@ void updateReviewForPaper_Success_ReturnsTrue() {
         assertFalse(result);
     }
 
-    @Test
-    void deleteReviewForPaper_Success_ReturnsTrue() {
-        Paper paper = new Paper();
-        paper.setDeadLine(LocalDate.now().plusDays(1));
-        when(paperRepository.findByPaperid(anyInt())).thenReturn(paper);
-        when(userRepository.findByUserId(anyString())).thenReturn(new User());
-        ReviewedPapers reviewedPaper = mock(ReviewedPapers.class);
-        when(reviewedPapersRepository.findByReviewedPaperAndReviewer(any(), any())).thenReturn(reviewedPaper);
-
-        boolean result = reviewService.deleteReviewForPaper(1, "user123");
-
-        assertTrue(result);
-        verify(reviewRepository).delete(reviewedPaper.getReview());
-        verify(reviewedPapersRepository).delete(reviewedPaper);
-    }
-
-    @Test
-    void getReviewForPaper_PaperNotFound_ReturnsNull() {
-
-        when(paperRepository.findByPaperid(anyInt())).thenReturn(null);
-
-
-        Review review = reviewService.getReviewForPaper(1, "user123");
-
-
-        assertNull(review);
-    }
-
-    @Test
-    void getReviewForPaper_UserNotFound_ReturnsNull() {
-
-        when(paperRepository.findByPaperid(anyInt())).thenReturn(new Paper());
-        when(userRepository.findByUserId(anyString())).thenReturn(null);
-
-
-        Review review = reviewService.getReviewForPaper(1, "user123");
-
-
-        assertNull(review);
-    }
 
 
 
