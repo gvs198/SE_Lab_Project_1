@@ -28,6 +28,13 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
    
+    
+    /** 
+     * @param userid
+     * @param paperid
+     * @param reviewBody
+     * @return ResponseEntity<String>
+     */
     @PostMapping("/submitreview/{paperid}/{userid}")
     public ResponseEntity<String> submitReview(@PathVariable String userid ,@PathVariable int paperid, @RequestBody String reviewBody)
 

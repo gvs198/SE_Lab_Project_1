@@ -33,6 +33,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepo;
 
+    
+    /** 
+     * @param user
+     * @return ResponseEntity<AuthenticationResponse>
+     */
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody RegisterRequest user) {
         if (user.getEmail() == null || user.getPassword() == null || user.getName() == null)

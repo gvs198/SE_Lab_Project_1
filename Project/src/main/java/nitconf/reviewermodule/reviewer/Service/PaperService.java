@@ -27,6 +27,11 @@ public class PaperService {
     @Autowired
     private UserRepository userRepository;
 
+    
+    /** 
+     * @param userid
+     * @return List<ReviewedPapers>
+     */
     public List<ReviewedPapers> reviewedPapers(String userid)
     {
         User reviewer = userRepository.findByUserId(userid);
@@ -35,6 +40,11 @@ public class PaperService {
 
         
     }
+    
+    /** 
+     * @param userid
+     * @return List<Paper>
+     */
     public List<Paper> assignedPapers(String userid) {
         List<Paper> allPapers = paperRepository.findAll(); 
         User reviewer = userRepository.findByUserId(userid);
@@ -50,6 +60,14 @@ public class PaperService {
         return assignedPapers;
     }
 
+    
+    /** 
+     * @param paperid
+     * @param title
+     * @param authors
+     * @param abstractLink
+     * @param deadLine
+     */
     public void addPapers(int paperid, String title, String authors,String abstractLink,LocalDate deadLine)
     {
         Paper newPaper = new Paper(paperid, title, authors, abstractLink, deadLine);

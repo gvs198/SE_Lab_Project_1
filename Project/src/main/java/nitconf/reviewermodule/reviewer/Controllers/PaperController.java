@@ -22,6 +22,11 @@ public class PaperController {
     @Autowired
     private PaperService paperService;
 
+    
+    /** 
+     * @param userid
+     * @return List<Paper>
+     */
     @GetMapping("/assignedpapers/{userid}")
     public List<Paper> assignedpapers(@PathVariable String userid)
     {
