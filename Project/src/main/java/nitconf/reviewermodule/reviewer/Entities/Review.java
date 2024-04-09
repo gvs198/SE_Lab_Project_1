@@ -19,6 +19,8 @@ public class Review {
     private ObjectId id;
 
     private String content;
+    private int starRating;
+
 
     @DBRef
     private User reviewer;
@@ -41,11 +43,31 @@ public class Review {
 
 
 
+
     public Review(String content, User reviewer, Paper paper) {
         this.content = content;
         this.reviewer = reviewer;
         this.paper = paper;
     }
+
+    
+
+
+    public Review(String content, int starRating, User reviewer, Paper paper) {
+        this.content = content;
+        this.starRating = starRating;
+        this.reviewer = reviewer;
+        this.paper = paper;
+    }
+
+
+
+    public void setStarRating(int starRating) {
+    if (starRating < 1 || starRating > 5) {
+      throw new IllegalArgumentException("Star rating must be between 1 and 5");
+    }
+    this.starRating = starRating;
+  }
     
 
     

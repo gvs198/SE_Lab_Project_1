@@ -1,45 +1,54 @@
 .body {
-    background-color: #f0f0f0;
+    background-color: #66b2b2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  h1 {
-    color: #333;
-    font-size: 2rem;
+}
+
+h1 {
+    color: #ffc60a;
+    font-size: 100rem; /* Increased font size */
     margin-bottom: 2rem;
-  }
-  
-  .container {
+    font-family: Georgia, serif; /* Changed font to Georgia */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .button {
+    margin-top: 1rem;
+}
+
+.prompt {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.button {
     padding: 12px 24px;
     margin: 0 10px;
-    font-size: 16px;
+    font-size: 1.2rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .button.login {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .button.signup {
-    background-color: #008CBA;
-    color: white;
-  }
-  
-  .button:hover {
+    color: #ffc60a;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.button.login {
+    background-color: #66b2b2;
+}
+
+.button.signup {
+    background-color: #66b2b2;
+}
+
+.button:hover {
     opacity: 0.9;
-  }
-  
+}

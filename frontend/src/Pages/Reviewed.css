@@ -1,21 +1,37 @@
-/* Reviewed.css */
-
 .reviewed-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .reviewed-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .reviewed-content {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.5;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.reviewed-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.reviewed-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.reviewed-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 15px;
+  width: 300px; 
+}
+
+.reviewed-card-header {
+  margin-bottom: 10px;
+}
+
+.reviewed-card-content {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}

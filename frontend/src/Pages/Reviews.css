@@ -1,47 +1,67 @@
 .container {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"],
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #ff0000; /* Error message color */
-  }
-  
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #ff0000; /* Error message color */
+}
+
+/* Star rating styles (assuming Font Awesome is used) */
+.star-rating {
+  display: flex;
+  justify-content: space-between;
+  width: 150px; /* Adjust width as needed */
+}
+
+.star-rating .fa-star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ccc; /* Unrated star color */
+}
+
+.star-rating .fa-star:hover {
+  color: orange; /* Hover color */
+}
+
+.star-rating .fa-star.checked {
+  color: gold; /* Rated star color */
+}

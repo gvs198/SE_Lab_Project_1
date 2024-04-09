@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nitconf.reviewermodule.reviewer.Entities.Review;
+import nitconf.reviewermodule.reviewer.Entities.ReviewDto;
 import nitconf.reviewermodule.reviewer.Repositories.PaperRepository;
 import nitconf.reviewermodule.reviewer.Repositories.ReviewRepository;
 import nitconf.reviewermodule.reviewer.Service.ReviewService;
@@ -36,22 +37,18 @@ public class ReviewController {
      * @return ResponseEntity<String>
      */
     @PostMapping("/submitreview/{paperid}/{userid}")
-    public ResponseEntity<String> submitReview(@PathVariable String userid ,@PathVariable int paperid, @RequestBody String reviewBody)
-
-    {
-        boolean creationSuccessful = reviewService.createReviewForPaper(reviewBody, paperid, userid);
-        if(creationSuccessful)
-        {
+    public ResponseEntity<String> submitReview(@PathVariable String userid, @PathVariable int paperid, @RequestBody ReviewDto reviewDto) {
+        boolean creationSuccessful = reviewService.createReviewForPaper(reviewDto.getReviewBody(), reviewDto.getRating(), paperid, userid);
+        if (creationSuccessful) {
             return new ResponseEntity<>("Review submitted successfully", HttpStatus.OK);
-        }
-        else{
+        } else {
             return new ResponseEntity<>("A review already exists for this paper. Kindly click the update review button in case you wish to change the contents of your review.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/update/{paperId}/{userid}")
-    public ResponseEntity<String> updateReview(@PathVariable String userid,@PathVariable int paperId, @RequestBody String reviewBody) {
-        boolean updateSuccessful = reviewService.updateReviewForPaper(reviewBody, paperId,userid);
+    public ResponseEntity<String> updateReview(@PathVariable String userid, @PathVariable int paperId, @RequestBody ReviewDto reviewDto) {
+        boolean updateSuccessful = reviewService.updateReviewForPaper(reviewDto.getReviewBody(), reviewDto.getRating(), paperId, userid);
 
         if (updateSuccessful) {
             return new ResponseEntity<>("Review updated successfully", HttpStatus.OK);
@@ -59,6 +56,7 @@ public class ReviewController {
             return new ResponseEntity<>("Failed to update review", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     @DeleteMapping("/delete/{paperId}/{userid}")
     public ResponseEntity<String> deleteReview(@PathVariable String userid, @PathVariable int paperId) {
@@ -83,6 +81,25 @@ public class ReviewController {
         }
     }
 
+    @GetMapping("/getrating/{paperId}/{userId}")
+    public ResponseEntity<Integer> getRating(@PathVariable String userId, @PathVariable int paperId) {
+        Review reviewForPaper = reviewService.getReviewForPaper(paperId, userId);
+        if (reviewForPaper == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND); // Use NOT_FOUND for missing resource
+        } else {
+            return new ResponseEntity<>(reviewForPaper.getStarRating(), HttpStatus.OK);
+        }
+    }
+    
+
+   
+    
+
+}
+
+    
+
+    
     
 
 
@@ -90,4 +107,4 @@ public class ReviewController {
 
 
 
-}
+
